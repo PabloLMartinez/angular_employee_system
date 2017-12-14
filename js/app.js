@@ -15,9 +15,6 @@ angular.module('directory', ['ionic', 'directory.services', 'directory.controlle
         $stateProvider
 
             .state('employee-index', {
-				/*
-				 * Primer error es el enrutamiento, la URL que me tomaba en el navegador era "/employes" con una sola E asi que lo corregi con una sola E a la ruta.
-				 */
                 url: '/employees',
                 templateUrl: 'templates/employee-index.html',
                 controller: 'EmployeeIndexCtrl'

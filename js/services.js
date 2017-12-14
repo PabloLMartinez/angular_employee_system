@@ -1,6 +1,6 @@
 angular.module('directory.services', [])
 
-    .factory('EmployeeService', function() {
+    .factory('EmployeeService', function($q) {
 
         var employees = [
             {"id": 1, "firstName": "James", "lastName": "King", "managerId": 0, "managerName": "", "reports": 4, "title": "President and CEO", "department": "Corporate", "cellPhone": "617-000-0001", "officePhone": "781-000-0001", "email": "jking@fakemail.com", "city": "Boston, MA", "pic": "James_King.jpg", "twitterId": "@fakejking", "blog": "http://coenraets.org"},
@@ -17,7 +17,7 @@ angular.module('directory.services', [])
             {"id": 12, "firstName": "Steven", "lastName": "Wells", "managerId": 4, "managerName": "John Williams", "reports": 0, "title": "Software Architect", "department": "Engineering", "cellPhone": "617-000-0012", "officePhone": "781-000-0012", "email": "swells@fakemail.com", "city": "Boston, MA", "pic": "Steven_Wells.jpg", "twitterId": "@fakeswells", "blog": "http://coenraets.org"}
         ];
 
-        // We use promises to make this api asynchronous. This is clearly not necessary when using in-memory data
+        // I use promises to make this api asynchronous. This is clearly not necessary when using in-memory data
         // but it makes this service more flexible and plug-and-play. For example, you can now easily replace this
         // service with a JSON service that gets its data from a remote server without having to changes anything
         // in the modules invoking the data service since the api is already async.
@@ -25,10 +25,8 @@ angular.module('directory.services', [])
         return {
             findAll: function() {
                 var deferred = $q.defer();
-				/*
-				 * Segundo error es que esta funcion devuelve solo un promise vacio. Solucion: colocar debajo de "var deferred = $q.defer();" esto: "deferred.resolve(employees);"
-				 * el cual me devolveria la lista de empleados del array de arriba.
-				 */
+                deferred.resolve(employees);
+
                 return deferred.promise;
             },
 

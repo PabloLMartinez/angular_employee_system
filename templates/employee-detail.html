@@ -2,8 +2,7 @@
   <content has-header="true" padding="true">
 
       <div class="details">
-	  <!-- 4to error, agregar una expresion en el src de la imagen para que tome dinamicamente la imagen, asi: src="pics/{{ employee.pic }}"-->
-          <img src="pics/employee.pic" width="100" height="100"/>
+          <img src="pics/{{ employee.firstName }}_{{ employee.lastName }}.jpg" width="100" height="100"/>
           <h4>{{ employee.firstName }} {{ employee.lastName }}</h4>
           <p>{{ employee.title }}<br/>
           {{ employee.city }}</p>
